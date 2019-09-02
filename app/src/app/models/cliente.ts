@@ -1,4 +1,4 @@
-export class Usuario {
+export class Cliente {
     public _id: string;
     public nombre: string;
     public apellidos: string;
