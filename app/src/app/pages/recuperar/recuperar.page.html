@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recuperar Contraseña</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <form [formGroup]="recuperarForm">
+      <ion-list lines="none" class="content-form">
+
+        <ion-item class="item-input" [disabled]="itemVerificacion">
+          <ion-label position="floating">Ingrese su correo electronico</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-button style="margin-top: 10px" expand="block" (click)="verificarEmail()" [disabled]="btnVerificacion">
+          Verificar
+        </ion-button>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

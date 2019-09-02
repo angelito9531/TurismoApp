@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ValidacionLoginGuard } from './validacion_login/validacion-login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
-
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [ValidacionLoginGuard]
+  },
+  { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
+  { path: 'recuperar', loadChildren: './pages/recuperar/recuperar.module#RecuperarPageModule' }
 ];
 @NgModule({
   imports: [
