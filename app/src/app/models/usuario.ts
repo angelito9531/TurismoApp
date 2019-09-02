@@ -4,4 +4,5 @@ export class Usuario {
     public email: string;
     public tipo_usuario: string;
     public foto: string;
+    public login: { usuario: string; contrasena: string };
 }

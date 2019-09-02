@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <form [formGroup]="registroForm">
+      <ion-list lines="none" class="content-form">
+        <ion-item>
+          <ion-label class="label-input" position="floating">Nombres</ion-label>
+          <ion-input formControlName="nombre" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-input" position="floating">Apellidos</ion-label>
+          <ion-input formControlName="apellidos" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-input" position="floating">Correo Electronico</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-input" position="floating">Contraseña</ion-label>
+          <ion-input formControlName="contrasena" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+
+
+    <ion-button color="danger" expand="block" (click)="registro()">Crear Cuenta</ion-button>
+  </div>
+</ion-content>
