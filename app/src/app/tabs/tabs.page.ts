@@ -21,7 +21,7 @@ export class TabsPage {
   cerrarSesion() {
     this.loginService.logout().then(() => {
       this.storage.clear();
-      this.loginService.usuarioOnly = null;
+      this.loginService.usuarioOnly = "";
       this.route.navigateByUrl('login');
     })
   }

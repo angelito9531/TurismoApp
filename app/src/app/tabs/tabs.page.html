@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       App Hoteles y Turismo
     </ion-title>
@@ -13,7 +13,7 @@
 
 <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" color="primary">
     <ion-tab-button *ngIf="dato == 'superadmin'" tab="tab1">
       <ion-icon name="flash"></ion-icon>
       <ion-label>Administradores</ion-label>
@@ -29,7 +29,7 @@
       <ion-label>Reservas</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf="dato == 'cliente'" tab="tab4">
+    <ion-tab-button *ngIf="dato == 'cliente' || dato == 'superadmin'" tab="tab4">
       <ion-icon name="map"></ion-icon>
       <ion-label>Hoteles- L.Tur.</ion-label>
     </ion-tab-button>
