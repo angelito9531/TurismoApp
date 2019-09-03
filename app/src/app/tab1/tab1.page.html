@@ -5,15 +5,15 @@
 
 <ion-content>
   <div *ngIf="estado != true">
-    <ion-toolbar>
-      <ion-buttons size-large slot="end" (click)="enabledToCreateUser()">
-        <ion-button>
-          <ion-icon name="add-circle"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
+    <br>
+    <ion-button (click)="enabledToCreateUser()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
 
-    <ion-searchbar placeholder="Filter Schedules" animated></ion-searchbar>
+    <div style="text-align: center;">
+      <p><b>ADMINISTRADORES</b></p>
+    </div>
+
     <ion-list *ngFor="let usuario of listUsersAdmins">
       <ion-item>
         <ion-thumbnail slot="start">

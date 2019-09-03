@@ -4,28 +4,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-list>
+    <ion-list-header>
+      HOTELES / LUGARES TURISTICOS
+    </ion-list-header>
 
-
-    <ion-list>
-      <ion-list-header>
-        Hoteles
-      </ion-list-header>
-
-      <ion-item *ngFor="let item of promociones" (click)="infoPromocion(item.empresa)">
-        <ion-avatar slot="start">
-          <img [src]=" _DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
-        </ion-avatar>
-        <ion-label>
-          <h2>{{item.nombre}}</h2>
-          <h3>{{item.descripcion}}</h3>
-          <h3>{{item.fecha_inicio|date:'mediumDate'}}</h3>
-          <p>{{item.fecha_fin|date:'mediumDate'}}</p>
-        </ion-label>
-
-
-      </ion-item>
-    </ion-list>
-
-  </ion-card>
+    <ion-item *ngFor="let item of promociones" (click)="infoPromocion(item.empresa)">
+      <ion-avatar slot="start">
+        <img [src]=" _DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.nombre}}</h2>
+        <h3>{{item.descripcion}}</h3>
+        <h3>{{item.fecha_inicio|date:'mediumDate'}}</h3>
+        <p>{{item.fecha_fin|date:'mediumDate'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
