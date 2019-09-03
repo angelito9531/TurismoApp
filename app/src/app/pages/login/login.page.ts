@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
             return {
               id: e.payload.doc.id,
               ...e.payload.doc.data()
-            } as Usuario;
+            };
           });
 
           this.loginService.usuarioOnly = usuarioDatos[0];
