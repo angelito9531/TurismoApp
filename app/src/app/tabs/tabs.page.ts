@@ -11,15 +11,20 @@ import { PopoverPage } from '../popovers/popover/popover.page';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  dato: any;
 
   constructor(private loginService: LoginService,
     private route: Router,
-    private storage: Storage,
-    public popoverController: PopoverController) { }
+    public popoverController: PopoverController,
+    private storage: Storage) {
+    this.dato = this.loginService.usuarioOnly.tipo_usuario;
+    console.log("Soy usuario: ", this.dato);
+  }
 
   cerrarSesion() {
     this.loginService.logout().then(() => {
       this.storage.clear();
+      this.loginService.usuarioOnly = null;
       this.route.navigateByUrl('login');
     })
   }
