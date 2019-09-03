@@ -43,7 +43,7 @@ export class Tab2Page {
   }
   async presentActionSheet(item) {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
+      header: 'Promociones',
       buttons: [{
         text: 'Borrar',
         role: 'destructive',

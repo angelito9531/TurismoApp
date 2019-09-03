@@ -58,4 +58,29 @@ export class InformacionPage implements OnInit {
     });
   }
 
+  async presentActionSheet(item) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Acciones',
+      buttons: [{
+        text: 'Borrar',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          this.borrar(item.id);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+  borrar(id) {
+    this.promocionesServ.eliminar(id);
+  }
+
 }
