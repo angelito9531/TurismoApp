@@ -4,9 +4,12 @@
       App Hoteles y Turismo
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="cerrarSesion()">Salir
-        <ion-icon name="close"></ion-icon>
+      <ion-button (click)="presentPopover($event)">
+          <ion-icon large name="person"></ion-icon>
       </ion-button>
+      <!-- <ion-button (click)="cerrarSesion()">Salir
+        <ion-icon name="close"></ion-icon>
+      </ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
