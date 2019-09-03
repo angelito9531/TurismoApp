@@ -23,9 +23,9 @@ export class Tab1Page implements OnInit{
     //TODO CONSTRUCTOR
     this.estado=true;
     this.userAux=new Usuario;
-    this.userAux.login={usuario:"",contrasena:""};
-    this.usuario=this.userAux.login.usuario;
-    this.contracena=this.userAux.login.contrasena;
+    //this.userAux.login={usuario:"",contrasena:""};
+    // this.usuario=this.userAux.login.usuario;
+    // this.contracena=this.userAux.login.contrasena;
     
 
   }
