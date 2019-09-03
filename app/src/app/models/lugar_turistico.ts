@@ -9,4 +9,5 @@ export class LugarTuristico {
   };
   public tipo: string;
   public id_administrador: string;
+  public id_promociones:string;
 }
