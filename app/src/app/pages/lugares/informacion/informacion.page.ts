@@ -66,6 +66,7 @@ export class InformacionPage implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
+          console.log(item.id);
           this.borrar(item.id);
         }
       }, {
@@ -80,6 +81,7 @@ export class InformacionPage implements OnInit {
     await actionSheet.present();
   }
   borrar(id) {
+    console.log(id);
     this.promocionesServ.eliminar(id);
   }
 
