@@ -35,6 +35,7 @@ export class RecuperarPage implements OnInit {
     this.itemVerificacion = !this.itemVerificacion;
     this.loginService.sendPasswordResetEmail(this.recuperarForm.value.email).then(res => {
       this.mensajeAlerta("Por favor verifique su email.");
+      this.regresar();
     }, err => {
       this.mensajeAlerta("Este correo no se encuentra registrado. Verifique he intente nuevamente.");
     });
