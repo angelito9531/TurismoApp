@@ -50,6 +50,6 @@ export class PromocionesService {
   }
 
   eliminar(id: string) {
-    return this.firestore.collection('lugares').doc(id).delete();
+    return this.firestore.collection('promociones').doc(id).delete();
   }
 }
