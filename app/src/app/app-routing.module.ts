@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
   { path: 'recuperar', loadChildren: './pages/recuperar/recuperar.module#RecuperarPageModule' },
   { path: 'registrar', loadChildren: './pages/lugares/registrar/registrar.module#RegistrarPageModule' },
-  { path: 'actualizar/:id', loadChildren: './pages/lugares/actualizar/actualizar.module#ActualizarPageModule' }
+  { path: 'actualizar/:id', loadChildren: './pages/lugares/actualizar/actualizar.module#ActualizarPageModule' },
+  { path: 'informacion/:id', loadChildren: './pages/lugares/informacion/informacion.module#InformacionPageModule' }
+
 
 ];
 @NgModule({

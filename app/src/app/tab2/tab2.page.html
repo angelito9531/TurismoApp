@@ -34,10 +34,10 @@
         </ion-list-header>
 
         <ion-item *ngFor="let item of hoteles">
-          <ion-avatar slot="start">
+          <ion-avatar slot="start" (click)="informacion(item.id)">
             <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
           </ion-avatar>
-          <ion-label>
+          <ion-label (click)="informacion(item.id)">
             <h2>{{item.nombre}}</h2>
             <h3>{{item.ubicacion_fisica}}</h3>
             <p>{{item.descripcion}}</p>
@@ -56,10 +56,10 @@
         </ion-list-header>
 
         <ion-item *ngFor="let item of lugares">
-          <ion-avatar slot="start">
+          <ion-avatar slot="start" (click)="informacion(item.id)">
             <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
           </ion-avatar>
-          <ion-label>
+          <ion-label (click)="informacion(item.id)">
             <h2>{{item.nombre}}</h2>
             <h3>{{item.ubicacion_fisica}}</h3>
             <p>{{item.descripcion}}</p>
