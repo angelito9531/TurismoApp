@@ -24,7 +24,9 @@ export class LoginPage implements OnInit {
   }
 
   iniciar() {
-    let tipoUsuario = 'admin';
+
+    this.route.navigateByUrl('tabs/tab1');
+    /*let tipoUsuario = 'admin';
     switch (tipoUsuario) {
       case 'admin':
         this.route.navigateByUrl('tabs/tab2');
@@ -37,7 +39,7 @@ export class LoginPage implements OnInit {
 
         this.route.navigateByUrl('tabs/tab1');
         break;
-    }
+    }*/
   }
 
   registro() {

@@ -7,6 +7,6 @@ export class LugarTuristico {
     lat: number,
     lng: number
   };
+  public tipo: string;
   public id_administrador: string;
-  public id_promocion: string;
 }

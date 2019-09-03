@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from "@angular/fire/auth";
 import { Usuario } from '../models/usuario';
 
 
@@ -9,7 +10,8 @@ import { Usuario } from '../models/usuario';
 export class UsuarioService {
 
   constructor(
-    private firestore: AngularFirestore) {
+    private firestore: AngularFirestore,
+    private auth: AngularFireAuth) {
 
   }
 
@@ -25,6 +27,7 @@ export class UsuarioService {
   crear(datos: Usuario) {
     //client.user = this.loginService.userId;
     //client.state_delete = false;
+
     return this.firestore.collection('usuarios').add(datos);
   }
 

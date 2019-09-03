@@ -33,13 +33,9 @@ export class RegistroPage implements OnInit {
       this.usuario = this.registroForm.value;
       this.usuario.login = { usuario: this.registroForm.value.email, contrasena: this.registroForm.value.contrasena };
       this.usuario.tipo_usuario = 'cliente';
-      console.log(this.usuario)
-      this.usuarioService.crear(this.usuario).then((data) => {
-        this.mensajeAlerta("Registro exitoso, ya puede acceder a la apllicacion.");
-        this.route.navigateByUrl('login');
-      }, (error) => {
-        alert(JSON.stringify(error));
-      });
+      this.usuario.foto = 'none';
+      this.usuarioService.crear(this.usuario);
+      this.mensajeAlerta("Registro exitoso, ya puede acceder a la apllicacion.");
     } else {
       console.log("verifique sus datos")
     }

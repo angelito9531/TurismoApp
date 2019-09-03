@@ -71,6 +71,7 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
+      "cordova-sqlite-storage": {},
       "cordova-plugin-geolocation": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
@@ -79,8 +80,7 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-sqlite-storage": {}
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"
