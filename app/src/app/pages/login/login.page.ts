@@ -31,6 +31,23 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.validarDatos();
+  }
+
+  validarDatos() {
+    if (this.loginService.usuarioOnly != null) {
+      switch (this.loginService.usuarioOnly.tipo_usuario) {
+        case 'admin':
+          this.route.navigateByUrl('tabs/tab2');
+          break;
+        case 'cliente':
+          this.route.navigateByUrl('tabs/tab4');
+          break;
+        case 'superadmin':
+          this.route.navigateByUrl('tabs/tab1');
+          break;
+      }
+    }
   }
 
   iniciar() {

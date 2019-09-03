@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    // canActivate: [ValidacionLoginGuard]
+    canActivate: [ValidacionLoginGuard]
   },
   { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
