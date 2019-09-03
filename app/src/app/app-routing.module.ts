@@ -17,8 +17,6 @@ const routes: Routes = [
   { path: 'informacion/:id', loadChildren: './pages/lugares/informacion/informacion.module#InformacionPageModule' },
   { path: 'crear/:id', loadChildren: () => import('./pages/promociones/crear/crear.module').then(m => m.CrearPageModule) }
 
-
-
 ];
 @NgModule({
   imports: [

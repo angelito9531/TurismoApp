@@ -23,7 +23,6 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.obtenerInformacionUsuario();
-    this.route.navigateByUrl('login');
   }
 
   initializeApp() {
@@ -36,7 +35,10 @@ export class AppComponent {
   obtenerInformacionUsuario() {
     this.storageLocal.get('usuario').then(dato => {
       if (dato != null) {
+        this.route.navigateByUrl('login');
         this.loginService.usuarioOnly = dato;
+      } else {
+        this.route.navigateByUrl('login');
       }
     });
   }
