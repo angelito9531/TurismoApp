@@ -1,63 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab One
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="estado != true">
     <ion-toolbar>
-        <ion-buttons size-large slot ="end" (click)="enabledToCreateUser()">
-            <ion-button>
-                <ion-icon  name="add-circle"></ion-icon>
-            </ion-button>
-          </ion-buttons>
+      <ion-buttons size-large slot="end" (click)="enabledToCreateUser()">
+        <ion-button>
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
-      
-      <ion-searchbar placeholder="Filter Schedules" animated></ion-searchbar>
-      <ion-list *ngFor="let usuario of listUsersAdmins">
-        <ion-item>
-            <ion-thumbnail slot="start">
-                <img src="../../assets/img/imgadmin.png">
-              </ion-thumbnail>
-              <ion-label text-wrap>
-                  <ion-text >
-                    <h3>Nombre:{{usuario.nombre}}</h3>
-                  </ion-text>
-                  <ion-text >
-                      <h3>Apellidos:{{usuario.apellidos}}</h3>
-                    </ion-text>
-                    <ion-text >
-                    <h3>Email:{{usuario.email}}</h3>
-                  </ion-text>        
-                  <ion-text >
-                      <h3>Tipo usuario:{{usuario.tipo_usuario | uppercase}}</h3>
-                    </ion-text>          
-                  <ion-text >
-                    <p>Atractivo(s) Turistico(s)</p>
-                  </ion-text>
-                </ion-label>
-                <ion-label>
-                  <ion-button color="danger" (click)="presentAlertConfirm(usuario.id)"><ion-icon name="trash"></ion-icon></ion-button>
-                  <ion-button color="warning" (click)="goToUpdateStep(usuario)"><ion-icon name="create"></ion-icon></ion-button>
-                </ion-label>
-        </ion-item>   
-      </ion-list>
+
+    <ion-searchbar placeholder="Filter Schedules" animated></ion-searchbar>
+    <ion-list *ngFor="let usuario of listUsersAdmins">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="../../assets/img/imgadmin.png">
+        </ion-thumbnail>
+        <ion-label text-wrap>
+          <ion-text>
+            <h3>Nombre:{{usuario.nombre}}</h3>
+          </ion-text>
+          <ion-text>
+            <h3>Apellidos:{{usuario.apellidos}}</h3>
+          </ion-text>
+          <ion-text>
+            <h3>Email:{{usuario.email}}</h3>
+          </ion-text>
+          <ion-text>
+            <h3>Tipo usuario:{{usuario.tipo_usuario | uppercase}}</h3>
+          </ion-text>
+          <ion-text>
+            <p>Atractivo(s) Turistico(s)</p>
+          </ion-text>
+        </ion-label>
+        <ion-label>
+          <ion-button color="danger" (click)="presentAlertConfirm(usuario.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-button color="warning" (click)="goToUpdateStep(usuario)">
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
   <div>
-    <ion-list *ngIf="estado != false" >
+    <ion-list *ngIf="estado != false">
       <ion-item>
-          <ion-input [(ngModel)]="userAux.nombre" name="nombre"  placeholder="Ingrese nombre" required></ion-input>
+        <ion-input [(ngModel)]="userAux.nombre" name="nombre" placeholder="Ingrese nombre" required></ion-input>
       </ion-item>
       <ion-item>
-          <ion-input [(ngModel)]="userAux.apellidos" name="apellidos" placeholder="Ingrese apellido" required></ion-input>
+        <ion-input [(ngModel)]="userAux.apellidos" name="apellidos" placeholder="Ingrese apellido" required></ion-input>
       </ion-item>
       <ion-item *ngIf="!estadoUpdate">
-          <ion-input  type="email" [(ngModel)]="userAux.email" name="email" placeholder="Ingrese email"></ion-input>
+        <ion-input type="email" [(ngModel)]="userAux.email" name="email" placeholder="Ingrese email"></ion-input>
       </ion-item>
-       <!-- <ion-item>
+      <!-- <ion-item>
         <ion-label>Gender</ion-label>
         <ion-select placeholder="Seleccionar tipo de usuario">
           <ion-select-option value="f">Administrador</ion-select-option>
@@ -65,13 +66,14 @@
         </ion-select>
       </ion-item> -->
       <ion-item *ngIf="!estadoUpdate">
-          <ion-input  type="password" [(ngModel)]="loginaux.contrasena" name="contra" placeholder="Ingrese su password"></ion-input>
-      </ion-item>   
+        <ion-input type="password" [(ngModel)]="loginaux.contrasena" name="contra" placeholder="Ingrese su password">
+        </ion-input>
+      </ion-item>
       <ion-item>
-          <ion-button slot="end" color="danger" (click)="disabledToCreateUser()">
-              Cancelar
-            </ion-button>
-            <!-- updateUserInDataBase -->
+        <ion-button slot="end" color="danger" (click)="disabledToCreateUser()">
+          Cancelar
+        </ion-button>
+        <!-- updateUserInDataBase -->
         <ion-button *ngIf="!estadoUpdate" slot="end" color="danger" (click)="getUserToSaveInDataBase()">
           Guardar Cambios
         </ion-button>
@@ -79,10 +81,10 @@
         <ion-button *ngIf="estadoUpdate" slot="end" color="danger" (click)="updateUserInDataBase()">
           Actualizar
         </ion-button>
-        
-      </ion-item>   
+
+      </ion-item>
     </ion-list>
-    
+
   </div>
-    
+
 </ion-content>

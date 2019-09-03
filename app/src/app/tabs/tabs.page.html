@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="presentPopover($event)">
-          <ion-icon large name="person"></ion-icon>
+        <ion-icon large name="person"></ion-icon>
       </ion-button>
       <!-- <ion-button (click)="cerrarSesion()">Salir
         <ion-icon name="close"></ion-icon>
@@ -24,17 +24,17 @@
 
     <ion-tab-button *ngIf="dato == 'admin' || dato == 'superadmin'" tab="tab2">
       <ion-icon name="apps"></ion-icon>
-      <ion-label>Hoteles - L. Tur.</ion-label>
+      <ion-label>Hot. - L.Tur.</ion-label>
     </ion-tab-button>
 
     <ion-tab-button *ngIf="dato == 'admin' || dato == 'superadmin'" tab="tab3">
       <ion-icon name="send"></ion-icon>
-      <ion-label>Reservas</ion-label>
+      <ion-label>Promociones</ion-label>
     </ion-tab-button>
 
     <ion-tab-button *ngIf="dato == 'cliente' || dato == 'superadmin'" tab="tab4">
       <ion-icon name="map"></ion-icon>
-      <ion-label>Hoteles- L.Tur.</ion-label>
+      <ion-label>Hot. - L.Tur.</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
