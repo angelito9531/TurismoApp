@@ -15,6 +15,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { environment } from 'src/environments/environment';
 import { from } from 'rxjs';
 import { LugarService } from './services/lugar.service';
+import { PopoverPageModule } from './popovers/popover/popover.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { LugarService } from './services/lugar.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    PopoverPageModule,
     IonicStorageModule.forRoot(),
     AppRoutingModule],
   providers: [
