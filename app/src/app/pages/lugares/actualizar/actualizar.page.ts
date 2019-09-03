@@ -5,6 +5,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { LugarService } from 'src/app/services/lugar.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertController } from '@ionic/angular';
+import { Location } from "@angular/common";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,34 +26,37 @@ export class ActualizarPage implements OnInit {
     private lugarService: LugarService,
     private alertController: AlertController,
     private userService: UsuarioService,
-    private activateRouter: ActivatedRoute
+    private activateRouter: ActivatedRoute,
+    private location: Location
 
   ) {
-    this.crearFormRegistro();
+
     this.id = activateRouter.snapshot.paramMap.get('id');
+    this.crearFormRegistro();
   }
 
   ngOnInit() {
 
-    this.userService.buscar(this.id).subscribe((data) => {
-      console.log(data);
-      console.log(data.data());
+    this.lugarService.buscar(this.id).subscribe((data) => {
+
+      this.lugar = data.data() as any;
+      this.crearFormRegistro2(data.data());
+
+
     })
   }
   registro() {
     if (this.registroForm.valid) {
-      this.lugar = this.registroForm.value;
+      this.lugar.nombre = this.registroForm.value.nombre
+      this.lugar.descripcion = this.registroForm.value.descripcion;
+      this.lugar.ubicacion_fisica = this.registroForm.value.ubicacion_fisica;
       this.lugar.ubicacion = { lat: this.registroForm.value.latitud, lng: this.registroForm.value.longitud };
+      if (this.foto != undefined) {
+        this.lugar.foto = this.foto;
 
-      this.lugar.foto = this.foto;
-      if (this.lugar.foto != undefined) {
-
-        this.lugarService.crear(this.lugar);
-        this.mensajeAlerta("Registro exitoso");
-      } else {
-        this.mensajeAlerta("Deve seleccionar una foto");
       }
-
+      this.lugarService.actualizar(this.id, this.lugar);
+      this.mensajeAlerta("Se actualizado el registro");
     } else {
       console.log("verifique sus datos")
     }
@@ -63,10 +67,19 @@ export class ActualizarPage implements OnInit {
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       ubicacion_fisica: ['', Validators.required],
-      tipo: ['', Validators.required],
-      id_administrador: ['', Validators.required],
       latitud: ['', Validators.required],
       longitud: ['', Validators.required],
+    });
+  }
+
+  crearFormRegistro2(data) {
+    console.log(data);
+    this.registroForm = this.formBuilder.group({
+      nombre: [data.nombre, Validators.required],
+      descripcion: [data.descripcion, Validators.required],
+      ubicacion_fisica: [data.ubicacion_fisica, Validators.required],
+      latitud: [data.ubicacion.lat, Validators.required],
+      longitud: [data.ubicacion.lng, Validators.required],
     });
   }
 
@@ -74,7 +87,14 @@ export class ActualizarPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'MiBar',
       message: message,
-      buttons: ['Aceptar']
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            this.location.back();
+          }
+        }
+      ]
     });
 
     await alert.present();

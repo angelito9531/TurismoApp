@@ -25,6 +25,7 @@ export class LugarService {
 
 
   buscar(id: string) {
+
     //return this.firestore.collection('client').doc(clientId).snapshotChanges();
     return this.firestore.collection('lugares').doc(id).get();
   }

@@ -26,20 +26,6 @@
         </ion-item>
 
         <ion-item>
-          <ion-label class="label-input" position="floating">tipo</ion-label>
-          <ion-select formControlName="tipo" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="hotel">Hotel</ion-select-option>
-            <ion-select-option value="lugarturistico">lugar turistico</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item>
-          <ion-label class="label-input" position="floating">admin</ion-label>
-          <ion-select formControlName="id_administrador" okText="Okay" cancelText="Dismiss">
-            <ion-select-option *ngFor="let item of lista" [value]="item.id">{{item.nombre}}</ion-select-option>
-
-          </ion-select>
-        </ion-item>
-        <ion-item>
           <ion-label class="label-input" position="floating">latitud</ion-label>
           <ion-input formControlName="latitud" type="number"></ion-input>
         </ion-item>
