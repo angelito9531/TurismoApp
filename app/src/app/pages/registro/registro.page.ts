@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 import { AlertController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,10 +14,12 @@ import { AlertController } from '@ionic/angular';
 export class RegistroPage implements OnInit {
   registroForm: FormGroup;
   usuario: Usuario;
+  detallesUsuario: any;
 
   constructor(private route: Router,
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
+    private loginService: LoginService,
     private alertController: AlertController) {
     this.crearFormRegistro();
   }
@@ -25,19 +28,28 @@ export class RegistroPage implements OnInit {
   }
 
   regresar() {
+    this.crearFormRegistro();
     this.route.navigateByUrl('login');
   }
 
   registro() {
     if (this.registroForm.valid) {
       this.usuario = this.registroForm.value;
-      this.usuario.login = { usuario: this.registroForm.value.email, contrasena: this.registroForm.value.contrasena };
       this.usuario.tipo_usuario = 'cliente';
       this.usuario.foto = 'none';
-      this.usuarioService.crear(this.usuario);
-      this.mensajeAlerta("Registro exitoso, ya puede acceder a la apllicacion.");
+      this.loginService.register(this.usuario.email, this.registroForm.value.contrasena).then(res => {
+        this.loginService.sendEmailVerification().then(res => {
+          this.usuarioService.crear(this.usuario);
+          this.mensajeAlerta("Registro exitoso, ya puede acceder a la apllicacion.");
+          this.regresar();
+        }, err => {
+          this.mensajeAlerta(err.message);
+        });
+      }, err => {
+        this.mensajeAlerta("Debe ingresar un email valido");
+      });
     } else {
-      console.log("verifique sus datos")
+      console.log("verifique sus datos");
     }
   }
 
@@ -52,7 +64,7 @@ export class RegistroPage implements OnInit {
 
   async mensajeAlerta(message: string) {
     const alert = await this.alertController.create({
-      header: 'MiBar',
+      header: 'App',
       message: message,
       buttons: ['Aceptar']
     });

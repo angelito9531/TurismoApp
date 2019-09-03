@@ -24,6 +24,10 @@ export class UsuarioService {
     return this.firestore.collection('usuarios').doc(id).get();
   }
 
+  buscarLogin(email: string) {
+    return this.firestore.collection('usuarios', ref => ref.where('email', '>=', email)).snapshotChanges();
+  }
+
   crear(datos: Usuario) {
     //client.user = this.loginService.userId;
     //client.state_delete = false;
