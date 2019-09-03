@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { UsuarioService } from '../services/usuario.service';
-
-
+import { LoginService } from '../services/login.service';
+import { Login } from '../models/login';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
@@ -11,18 +12,27 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class Tab1Page implements OnInit{
 
+  registroForm:FormGroup
   listUsersAdmins:any[] = [];
   userAux:Usuario;
+  loginaux:Login
   estado:boolean
   usuario:string;
   contracena:string;
   constructor(
-    private userService:UsuarioService
+    private userService:UsuarioService,
+    private userLogin:LoginService,
+    //private formBuilder: FormBuilder,
   ) 
   {
     //TODO CONSTRUCTOR
-    this.estado=true;
+    this.estado=false;
     this.userAux=new Usuario;
+    this.loginaux=new Login;
+    this.userAux.email=" ";
+    this.contracena=" qwe"
+    this.userAux.tipo_usuario="Administrador";
+    
     //this.userAux.login={usuario:"",contrasena:""};
     // this.usuario=this.userAux.login.usuario;
     // this.contracena=this.userAux.login.contrasena;
@@ -32,6 +42,15 @@ export class Tab1Page implements OnInit{
 
   ngOnInit(){
     this.getUsersAdmins();
+  }
+
+  initializeVariables(){
+    this.estado=false;
+    this.userAux;
+    // this.loginaux=new Login;
+    this.userAux.email="";
+    this.contracena=""
+    this.userAux.tipo_usuario="Administrador";
   }
 
   getUsersAdmins()
@@ -52,9 +71,50 @@ export class Tab1Page implements OnInit{
     })
   }
 
+  deleteUserInDataBase(id:string,user:Usuario){
+    this.userService.actualizar(id,user).then(data =>{
+      if(data != null){
+        console.log("datos borrrados");
+      }
+    })
+    console.log(user);
+
+  }
+
+  updateUserInDataBase(user:Usuario){
+
+  }
+
+  enabledToCreateUser(){
+    this.estado=true;
+  }
+
+  disabledToCreateUser(){
+    this.estado=false;
+  }
+
   getUserToSaveInDataBase(){
-    this.userAux
-    console.log(this.userAux);
+    // this.loginaux.email=this.userAux.email;
+    // if(this.loginaux.contrasena != "" || this.loginaux.email != "")
+    //   this.userLogin.register(this.loginaux.email,this.loginaux.contrasena).then((data) =>{
+      this.userAux.foto="";
+       console.log(this.userAux);
+           this.userService.crear(this.userAux).then(data =>{
+             this.initializeVariables();
+           })
+     
+        
+   //   });
+    
+  }
+
+  crearFormRegistro() {
+    // this.registroForm = this.formBuilder.group({
+    //   // nombre: ['', Validators.required],
+    //   // apellidos: ['', Validators.required],
+    //   // email: ['', Validators.required],
+    //   // contrasena: ['', Validators.required]
+    // });
   }
 
 }

@@ -32,7 +32,7 @@ export class UsuarioService {
     //client.user = this.loginService.userId;
     //client.state_delete = false;
 
-    return this.firestore.collection('usuarios').add(datos);
+    return this.firestore.collection<any>('usuarios').add(datos);
   }
   listarAdmins() {
     return this.firestore.collection('usuarios', ref => ref.where("tipo_usuario", "==", "admin")).snapshotChanges();
