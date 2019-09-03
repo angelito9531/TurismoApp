@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  usuarioOnly: any;
+
   constructor(
-    public angularFireAuth: AngularFireAuth,
-    public router: Router) {
-    this.angularFireAuth.authState.subscribe(userResponse => {
+    private angularFireAuth: AngularFireAuth,
+    private router: Router,
+    private storage: Storage) {
+
+    /*this.angularFireAuth.authState.subscribe(userResponse => {
       if (userResponse) {
-        localStorage.setItem('usuario', JSON.stringify(userResponse));
+        this.storage.set('login', userResponse);
       } else {
-        localStorage.setItem('usuario', null);
+        this.storage.set('login', null);
       }
-    })
+    })*/
   }
 
   async login(email: string, password: string) {
@@ -38,11 +42,6 @@ export class LoginService {
 
   async logout() {
     return await this.angularFireAuth.auth.signOut();
-  }
-
-
-  isUserLoggedIn() {
-    return JSON.parse(localStorage.getItem('usuario'));
   }
 
 }

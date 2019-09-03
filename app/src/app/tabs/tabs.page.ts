@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +10,14 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(private loginService: LoginService,
+    private route: Router,
+    private storage: Storage) { }
 
+  cerrarSesion() {
+    this.loginService.logout().then(() => {
+      this.storage.clear();
+      this.route.navigateByUrl('login');
+    })
+  }
 }

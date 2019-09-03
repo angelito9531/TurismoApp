@@ -16,9 +16,9 @@ export class ValidacionLoginGuard implements CanActivate {
   }
 
   async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
-    let stateSesion = this.verificarSesionUsuario();
+    let estadoSesion = this.verificarSesionUsuario();
 
-    if (!await stateSesion) {
+    if (!await estadoSesion) {
       console.log("No hay sesion guardada.")
       this.router.navigate(['login']);
       return false;
@@ -28,7 +28,7 @@ export class ValidacionLoginGuard implements CanActivate {
 
   async verificarSesionUsuario() {
     let storage = null;
-    await this.storage.get('user').then((val) => {
+    await this.storage.get('usuario').then((val) => {
       storage = val;
     });
     return storage;
