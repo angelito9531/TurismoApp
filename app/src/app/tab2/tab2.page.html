@@ -5,14 +5,74 @@
     </ion-title>
 
     <ion-buttons slot="primary">
-      <ion-button>
-        <ion-icon slot="icon-only" name="star"></ion-icon>
+      <ion-button (click)="registrar()">
+        <ion-icon name="add-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+<<<<<<< HEAD
+=======
   
+>>>>>>> 6ec147d521921bf21f3058c916823a61ddc36623
 </ion-header>
 
 <ion-content>
-  <h3>4fbuihf4u</h3>
+  <ion-segment [(ngModel)]="segment">
+
+    <ion-segment-button value="hoteles">
+      Hoteles
+    </ion-segment-button>
+    <ion-segment-button value="lugares">
+      Lugares
+    </ion-segment-button>
+
+
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+    <ion-card *ngSwitchCase="'hoteles'">
+      <ion-list>
+        <ion-list-header>
+          Moteles
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of hoteles">
+          <ion-avatar slot="start">
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{item.nombre}}</h2>
+            <h3>{{item.ubicacion_fisica}}</h3>
+            <p>{{item.descripcion}}</p>
+          </ion-label>
+
+          <ion-icon (click)="presentActionSheet(item)" name="more" slot="end"></ion-icon>
+
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'lugares'">
+      <ion-list>
+        <ion-list-header>
+          Lugares turisticos
+        </ion-list-header>
+
+        <ion-item *ngFor="let item of lugares">
+          <ion-avatar slot="start">
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{item.nombre}}</h2>
+            <h3>{{item.ubicacion_fisica}}</h3>
+            <p>{{item.descripcion}}</p>
+          </ion-label>
+
+          <ion-icon (click)="presentActionSheet(item)" name="more" slot="end"></ion-icon>
+
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
 </ion-content>

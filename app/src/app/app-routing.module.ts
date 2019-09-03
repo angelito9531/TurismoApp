@@ -11,7 +11,10 @@ const routes: Routes = [
   { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'registro', loadChildren: './pages/registro/registro.module#RegistroPageModule' },
-  { path: 'recuperar', loadChildren: './pages/recuperar/recuperar.module#RecuperarPageModule' }
+  { path: 'recuperar', loadChildren: './pages/recuperar/recuperar.module#RecuperarPageModule' },
+  { path: 'registrar', loadChildren: './pages/lugares/registrar/registrar.module#RegistrarPageModule' },
+  { path: 'actualizar/:id', loadChildren: './pages/lugares/actualizar/actualizar.module#ActualizarPageModule' }
+
 ];
 @NgModule({
   imports: [
