@@ -25,7 +25,9 @@ export class Tab2Page {
     console.log(this.hoteles);
     this.route.navigateByUrl("/registrar");
   }
-
+  informacion(id) {
+    this.route.navigateByUrl("/informacion/" + id);
+  }
   listarMoteles() {
     this.lugarService.listarHoteles().subscribe((data) => {
 
