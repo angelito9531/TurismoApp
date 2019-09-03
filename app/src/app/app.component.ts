@@ -31,8 +31,7 @@ export class AppComponent {
   }
 
   obtenerInformacionUsuario() {
-    this.storageLocal.get('user').then(dato => {
-      console.log("Usuario_Logueado: ", dato);
+    this.storageLocal.get('usuario').then(dato => {
       if (dato != null) {
         this.loginService.usuarioOnly = dato;
       }
