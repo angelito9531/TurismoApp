@@ -3,17 +3,16 @@
     <ion-title>
       Lugares tusisticos
     </ion-title>
-
-    <ion-buttons slot="primary">
-      <ion-button (click)="registrar()">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
+  <br>
+
+  <ion-button (click)="registrar()">
+    <ion-icon name="add-circle-outline"></ion-icon>
+  </ion-button>
   <ion-segment [(ngModel)]="segment">
 
     <ion-segment-button value="hoteles">
@@ -30,7 +29,7 @@
     <ion-card *ngSwitchCase="'hoteles'">
       <ion-list>
         <ion-list-header>
-          Moteles
+          Hoteles
         </ion-list-header>
 
         <ion-item *ngFor="let item of hoteles">

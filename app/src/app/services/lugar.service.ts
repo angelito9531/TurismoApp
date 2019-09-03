@@ -30,6 +30,7 @@ export class LugarService {
     return this.firestore.collection('lugares').doc(id).get();
   }
 
+
   crear(datos: LugarTuristico) {
     //client.user = this.loginService.userId;
     //client.state_delete = false;
