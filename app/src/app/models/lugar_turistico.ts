@@ -1,5 +1,4 @@
 export class LugarTuristico {
-  public _id: string;
   public nombre: string;
   public ubicacion_fisica: string;
   public descripcion: string
@@ -9,4 +8,5 @@ export class LugarTuristico {
   };
   public tipo: string;
   public id_administrador: string;
+  public foto: string;
 }

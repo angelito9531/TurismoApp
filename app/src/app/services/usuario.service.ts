@@ -30,7 +30,10 @@ export class UsuarioService {
 
     return this.firestore.collection('usuarios').add(datos);
   }
+  listarAdmins() {
+    return this.firestore.collection('usuarios', ref => ref.where("tipo_usuario", "==", "admin")).snapshotChanges();
 
+  }
   actualizar(id: string, datos: Usuario) {
     //client.user = this.loginService.userId;
     return this.firestore.collection('usuarios').doc(id).update(datos);

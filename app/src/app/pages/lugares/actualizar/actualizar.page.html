@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actualizar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <form [formGroup]="registroForm">
+      <ion-list lines="none" class="content-form">
+        <ion-item>
+          <ion-label class="label-input" position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-input" position="floating">descripcion</ion-label>
+          <ion-input formControlName="descripcion" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-input" position="floating">Direccion</ion-label>
+          <ion-input formControlName="ubicacion_fisica" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="label-input" position="floating">tipo</ion-label>
+          <ion-select formControlName="tipo" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="hotel">Hotel</ion-select-option>
+            <ion-select-option value="lugarturistico">lugar turistico</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-input" position="floating">admin</ion-label>
+          <ion-select formControlName="id_administrador" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let item of lista" [value]="item.id">{{item.nombre}}</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-input" position="floating">latitud</ion-label>
+          <ion-input formControlName="latitud" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label-input" position="floating">longitud</ion-label>
+          <ion-input formControlName="longitud" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label (click)="selectPhoto()" class="label-input">Selcciona foto</ion-label>
+        </ion-item>
+      </ion-list>
+    </form>
+
+
+    <ion-button color="danger" expand="block" (click)="registro()">Crear Cuenta</ion-button>
+  </div>
+</ion-content>
