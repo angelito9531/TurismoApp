@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 import { LoginService } from './services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,11 @@ export class AppComponent {
     private statusBar: StatusBar,
     private storageLocal: Storage,
     private loginService: LoginService,
+    private route: Router
   ) {
     this.initializeApp();
     this.obtenerInformacionUsuario();
+    this.route.navigateByUrl('login');
   }
 
   initializeApp() {
