@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Promociones
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-card>
+
+
+    <ion-list>
+      <ion-list-header>
+        Hoteles
+      </ion-list-header>
+
+      <ion-item *ngFor="let item of promociones" (click)="infoPromocion(item.empresa)">
+        <ion-avatar slot="start">
+          <img [src]=" _DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.nombre}}</h2>
+          <h3>{{item.fecha_inicio}}</h3>
+          <h3>{{item.fecha_inicio}}</h3>
+          <p>{{item.fecha_fin}}</p>
+        </ion-label>
+
+
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+</ion-content>

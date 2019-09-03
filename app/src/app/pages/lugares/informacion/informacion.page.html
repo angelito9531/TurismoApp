@@ -34,4 +34,31 @@
       </ion-card>
     </ion-item>
   </ion-list>
+  <ion-card>
+
+    <ion-button (click)="registrarp()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-list>
+      <ion-list-header>
+        Hoteles
+      </ion-list-header>
+
+      <ion-item *ngFor="let item of promociones">
+        <ion-avatar slot="start">
+          <img [src]=" _DomSanitizationService.bypassSecurityTrustUrl(item.foto)">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.nombre}}</h2>
+          <h3>{{item.descripcion}}</h3>
+          <h3>{{item.fecha_inicio}}</h3>
+          <p>{{item.fecha_fin}}</p>
+        </ion-label>
+
+        <ion-icon name="more" slot="end"></ion-icon>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
 </ion-content>

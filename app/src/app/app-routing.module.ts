@@ -14,7 +14,9 @@ const routes: Routes = [
   { path: 'recuperar', loadChildren: './pages/recuperar/recuperar.module#RecuperarPageModule' },
   { path: 'registrar', loadChildren: './pages/lugares/registrar/registrar.module#RegistrarPageModule' },
   { path: 'actualizar/:id', loadChildren: './pages/lugares/actualizar/actualizar.module#ActualizarPageModule' },
-  { path: 'informacion/:id', loadChildren: './pages/lugares/informacion/informacion.module#InformacionPageModule' }
+  { path: 'informacion/:id', loadChildren: './pages/lugares/informacion/informacion.module#InformacionPageModule' },
+  { path: 'crear/:id', loadChildren: () => import('./pages/promociones/crear/crear.module').then(m => m.CrearPageModule) }
+
 
 
 ];
